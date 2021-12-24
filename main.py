@@ -75,7 +75,7 @@ if __name__ == '__main__':
     print("\n\nScraping groceries...\n\n")
     for data in cat_urls_saved:
         for key in data:
-            if key != "Household" and key != "Pets":
+            if key == "Fresh Food" or key == "Food Cupboard":
                 file_name = "Data/" + key.replace(" ", "_").lower() + "_tesco_products.xlsx"
                 #excel.create_heading(file_name)
                 print("Scraping " + key + " products...")
@@ -89,8 +89,8 @@ if __name__ == '__main__':
                             list_scraped_products.append(prod_url)
                         else:
                             write_not_scraped_products(prod_url)
-                    else:
-                        print(str(counter) + " => already scraped " + prod_url)
+                    # else:
+                    #     print(str(counter) + " => already scraped " + prod_url)
                     counter = counter + 1
 
     # for cat in categories_list:
