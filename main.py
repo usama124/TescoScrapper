@@ -77,7 +77,7 @@ if __name__ == '__main__':
         for key in data:
             if key == "Fresh Food" or key == "Food Cupboard":
                 file_name = "Data/" + key.replace(" ", "_").lower() + "_tesco_products.xlsx"
-                #excel.create_heading(file_name)
+                excel.create_heading(file_name)
                 print("Scraping " + key + " products...")
                 prod_urls_list = list(set(data[key]))
                 counter = 1

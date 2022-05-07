@@ -1,16 +1,20 @@
 import openpyxl
+from os.path import exists
 
 
 def create_heading(file_name):
+    file_exists = exists(file_name)
+    if not file_exists:
+        headers = ["Main Category", "Sub Category", "Sub Sub Category", "Sub Sub Sub Category", "Tags", "SKU", "Title", "Price", "Price/unit", "Weight", "Product Details", "Image Link", "Image 1"]
+        # workbook_name = "Data/tesco_products.xlsx"
+        workbook_name = file_name
 
-    headers = ["Main Category", "Sub Category", "Sub Sub Category", "Sub Sub Sub Category", "Tags", "SKU", "Title", "Price", "Price/unit", "Weight", "Product Details", "Image Link", "Image 1"]
-    # workbook_name = "Data/tesco_products.xlsx"
-    workbook_name = file_name
-
-    wb_obj = openpyxl.Workbook()
-    sheet = wb_obj.active
-    sheet.append(headers)
-    wb_obj.save(filename=workbook_name)
+        wb_obj = openpyxl.Workbook()
+        sheet = wb_obj.active
+        sheet.append(headers)
+        wb_obj.save(filename=workbook_name)
+    else:
+        print("File Already exists...")
 
 
 def write_excel_file(file_name, categories_list, tags, sku, title, price, price_per_unit, weight, prod_details, img_link, img):
